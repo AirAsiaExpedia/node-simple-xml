@@ -1,0 +1,28 @@
+{
+  "name": "simple-xml",
+  "version": "0.0.2",
+  "description": "A naive XML parser and builder based on libxmljs",
+  "main": "XML.js",
+  "scripts": {
+    "test": "NODE_ENV=test mocha -w test/"
+  },
+  "keywords": [
+    "xml",
+    "parser",
+    "builder",
+    "libxml"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AirAsiaExpedia/node-simple-xml"
+  },
+  "author": "Jerome Touffe-Blin <jtblin@gmail.com>",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "libxmljs": "~0.8.1"
+  },
+  "devDependencies": {
+    "mocha": "~1.18.2",
+    "chai": "~1.9.1"
+  }
+}
