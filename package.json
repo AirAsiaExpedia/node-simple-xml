@@ -1,6 +1,6 @@
 {
   "name": "simple-xml",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A naive XML parser and builder based on libxmljs",
   "main": "XML.js",
   "scripts": {

@@ -6,7 +6,7 @@ It supports parsing arrays of **elements** or **attributes**, but not both inter
 
 ## Usage
 
-    npm install XML --save
+    npm install simple-xml --save
 
 ### parse(xml string or libxml document)
 
