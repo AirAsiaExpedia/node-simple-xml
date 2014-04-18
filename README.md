@@ -13,7 +13,7 @@ It supports parsing arrays of **elements** or **attributes**, but not both inter
 Parse a string or a libxml document or element into a Plain Old Javascript Object.
 
 ```js
-var xml = '<?xml version="1.0" encoding="UTF-8"?><items><item>Item 1</item><item>Item 2</item><item>Item 3</item></items>';
+var xml = '<?xml version="1.0" encoding="UTF-8"?><items><item><value>Item 1</value></item><item><value>Item 2</value></item><item><value>Item 3</value></item></items>';
 var XML = require('simple-xml');
 var obj = XML.parse(xml);
 
@@ -30,6 +30,6 @@ var obj = {"items":{"item":[{"value":"Item 1"},{"value":"Item 2"},{"value":"Item
 var XML = require('simple-xml');
 var xml = XML.stringify(obj);
 
-// '<items><item>Item 1</item><item>Item 2</item><item>Item 3</item></items>';
+// '<items><item><value>Item 1</value></item><item><value>Item 2</value></item><item><value>Item 3</value></item></items>'
 
 ```
