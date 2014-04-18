@@ -1,6 +1,6 @@
 {
   "name": "simple-xml",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A naive XML parser and builder based on libxmljs",
   "main": "XML.js",
   "scripts": {
@@ -19,7 +19,7 @@
   "author": "Jerome Touffe-Blin <jtblin@gmail.com>",
   "license": "BSD-2-Clause",
   "dependencies": {
-    "libxmljs": "~0.8.1"
+    "libxmljs": "~0.9.0"
   },
   "devDependencies": {
     "mocha": "~1.18.2",
