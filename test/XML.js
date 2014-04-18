@@ -45,6 +45,13 @@ describe('XML', function () {
       var xml = '<items><item><value>Item 1</value></item><item><value>Item 2</value></item><item><value>Item 3</value></item></items>';
       XML.stringify(obj).should.equal(xml);
     });
+
+    it('stringifies simple arrays into an xml string', function () {
+      var obj = {"items":{"item":["Item 1","Item 2","Item 3"]}};
+      var xml = '<items><item>Item 1</item><item>Item 2</item><item>Item 3</item></items>';
+      XML.stringify(obj).should.equal(xml);
+    });
+
   });
 
 });
