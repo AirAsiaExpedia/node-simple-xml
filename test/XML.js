@@ -21,14 +21,15 @@ describe('XML', function () {
       verifyParsedObject(obj);
     });
 
-    // TODO: handles array of text nodes
-    it.skip('parses arrays of text nodes', function () {
+    it('parses arrays of text nodes', function () {
       var xml = '<?xml version="1.0" encoding="UTF-8"?><items><item>Item 1</item><item>Item 2</item><item>Item 3</item></items>';
       var obj = XML.parse(xml);
       obj.items.should.exist;
       obj.items.item.should.be.an.instanceOf(Array);
       obj.items.item.length.should.equal(3);
       obj.items.item[0].should.equal('Item 1');
+      obj.items.item[1].should.equal('Item 2');
+      obj.items.item[2].should.equal('Item 3');
     });
 
     function verifyParsedObject (obj) {
@@ -36,6 +37,8 @@ describe('XML', function () {
       obj.items.item.should.be.an.instanceOf(Array);
       obj.items.item.length.should.equal(3);
       obj.items.item[0].value.should.equal('Item 1');
+      obj.items.item[1].value.should.equal('Item 2');
+      obj.items.item[2].value.should.equal('Item 3');
     }
   });
 

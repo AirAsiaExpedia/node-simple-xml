@@ -33,18 +33,16 @@ function parse (data) {
     var children = element.childNodes();
     if (children.length) {
       children.forEach(function (child) {
-        var name = child.name();
-        if (hasTextNode(child)) {
+        var name = child.name(), isTextNode = hasTextNode(child);
+        if (Array.isArray(obj[name])) {
+          obj[name].push(isTextNode ? child.text() : parse(child));
+        } else if (obj[name]) {
+          var oldValue = obj[name];
+          obj[name] = [oldValue, isTextNode ? child.text() : parse(child)];
+        } else if (isTextNode) {
           obj[name] = child.text();
         } else {
-          if (Array.isArray(obj[name])) {
-            obj[name].push(parse(child));
-          } else if (obj[name]) {
-            var oldValue = obj[name];
-            obj[name] = [oldValue, parse(child)];
-          } else {
-            obj[name] = parse(child);
-          }
+          obj[name] = parse(child);
         }
       });
     } else {

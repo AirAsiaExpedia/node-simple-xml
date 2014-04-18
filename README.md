@@ -15,11 +15,18 @@ Parse a string or a libxml document or element into a Plain Old Javascript Objec
 ```js
 var xml = '<?xml version="1.0" encoding="UTF-8"?><items><item><value>Item 1</value></item><item><value>Item 2</value></item><item><value>Item 3</value></item></items>';
 var XML = require('simple-xml');
-var obj = XML.parse(xml);
+console.log(JSON.stringify( XML.parse(xml) ));
 
 // {"items":{"item":[{"value":"Item 1"},{"value":"Item 2"},{"value":"Item 3"}]}}
 
+var xml = '<?xml version="1.0" encoding="UTF-8"?><items><item>Item 1</item><item>Item 2</item><item>Item 3</item></items>';
+console.log(JSON.stringify( XML.parse(xml) ));
+
+// {"items":{"item":["Item 1","Item 2","Item 3"]}}
+
 ```
+
+
 
 ### stringify(object)
 
@@ -28,8 +35,8 @@ Transforms an object into a simple xml string representation.
 ```js
 var obj = {"items":{"item":[{"value":"Item 1"},{"value":"Item 2"},{"value":"Item 3"}]}}
 var XML = require('simple-xml');
-var xml = XML.stringify(obj);
+console.log( XML.stringify(obj) );
 
-// '<items><item><value>Item 1</value></item><item><value>Item 2</value></item><item><value>Item 3</value></item></items>'
+// <items><item><value>Item 1</value></item><item><value>Item 2</value></item><item><value>Item 3</value></item></items>
 
 ```
