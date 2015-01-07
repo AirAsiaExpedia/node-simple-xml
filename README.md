@@ -40,3 +40,10 @@ console.log( XML.stringify(obj) );
 // <items><item><value>Item 1</value></item><item><value>Item 2</value></item><item><value>Item 3</value></item></items>
 
 ```
+If the XML needs attributes, then the JSON object must be like:
+
+```js
+var obj = {"items":{"item":[{"attributes":{"ID":"1","Name":"Item 1"},"value":"Item 1"},{"attributes":{"ID":"2","Name":"Item 2"},"value":"Item 2"},{"attributes":{"ID":"3","Name":"Item 3"},"value":"Item 3"}]}};
+
+// <items><item "ID"="1" "Name"="Item 1">Item 1</item><item "ID"="2" "Name"="Item 2">Item 2</item><item "ID"="3" "Name"="Item 3">Item 3</item></items>
+```

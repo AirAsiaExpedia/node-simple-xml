@@ -1,6 +1,7 @@
 describe('XML', function () {
 
-  var XML = require('../XML'), libxmljs = require("libxmljs");
+  var XML = require('../XML'),
+    libxmljs = require('libxmljs');
 
   describe('#parse', function () {
     it('parses the xml string into an object', function () {
@@ -32,7 +33,7 @@ describe('XML', function () {
       obj.items.item[2].should.equal('Item 3');
     });
 
-    function verifyParsedObject (obj) {
+    function verifyParsedObject(obj) {
       obj.items.should.exist;
       obj.items.item.should.be.an.instanceOf(Array);
       obj.items.item.length.should.equal(3);
@@ -44,13 +45,55 @@ describe('XML', function () {
 
   describe('#stringify', function () {
     it('stringifies the object into an xml string', function () {
-      var obj = {"items":{"item":[{"value":"Item 1"},{"value":"Item 2"},{"value":"Item 3"}]}};
+      var obj = {
+        "items": {
+          "item": [{
+            "value": "Item 1"
+          }, {
+            "value": "Item 2"
+          }, {
+            "value": "Item 3"
+          }]
+        }
+      };
       var xml = '<items><item><value>Item 1</value></item><item><value>Item 2</value></item><item><value>Item 3</value></item></items>';
       XML.stringify(obj).should.equal(xml);
     });
 
+    it('stringifies the object with attributes into an xml string', function () {
+      var obj = {
+        "items": {
+          "item": [{
+            "attributes": {
+              "ID": "1",
+              "Name": "Item 1"
+            },
+            "value": "Item 1"
+          }, {
+            "attributes": {
+              "ID": "2",
+              "Name": "Item 2"
+            },
+            "value": "Item 2"
+          }, {
+            "attributes": {
+              "ID": "3",
+              "Name": "Item 3"
+            },
+            "value": "Item 3"
+          }]
+        }
+      };
+      var xml = '<items><item "ID"="1" "Name"="Item 1">Item 1</item><item "ID"="2" "Name"="Item 2">Item 2</item><item "ID"="3" "Name"="Item 3">Item 3</item></items>';
+      XML.stringify(obj).should.equal(xml);
+    });
+
     it('stringifies simple arrays into an xml string', function () {
-      var obj = {"items":{"item":["Item 1","Item 2","Item 3"]}};
+      var obj = {
+        "items": {
+          "item": ["Item 1", "Item 2", "Item 3"]
+        }
+      };
       var xml = '<items><item>Item 1</item><item>Item 2</item><item>Item 3</item></items>';
       XML.stringify(obj).should.equal(xml);
     });
