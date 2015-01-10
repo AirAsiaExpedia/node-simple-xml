@@ -4,6 +4,8 @@ A naive XML parser and builder based on [libxmljs](https://github.com/polotek/li
 This module was created as a simple way to parse and build xml for web services such as SOAP.
 It supports parsing arrays of **elements** or **attributes**, but not both intermingled.
 
+It supports attributes as a child object with the name "_attributes".
+
 ## Usage
 
     npm install simple-xml --save
