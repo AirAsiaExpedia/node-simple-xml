@@ -12,7 +12,7 @@ function parseAttributes(element) {
 function stringifyAttributes(obj) {
   var attributes = [];
   for (var key in obj) {
-    attributes.push('\"' + key + '\"=\"' + obj[key] + '\"');
+    attributes.push('' + key + '=\"' + obj[key] + '\"');
   }
   return attributes.join(' ');
 }
@@ -26,8 +26,10 @@ function stringify(obj) {
 
   function convert(item) {
     if (typeof item === 'object') {
-      if (item["attributes"]) {
-        xml += '<' + key + ' ' + stringifyAttributes(item["attributes"]) + '>' + (typeof item["value"] === 'object' ? stringify(item["value"]) : item["value"]) + '</' + key + '>';
+      if (item["_attributes"]) {
+        xml += '<' + key + ' ' + stringifyAttributes(item["_attributes"]) + '>' + (typeof item["_value"] === 'object' ? stringify(item["_value"]) : item["_value"]) + '</' + key + '>';
+      } else if (item["_value"]) {
+        xml += '<' + key + '>' + stringify(item["_value"]) + '</' + key + '>';
       } else {
         xml += '<' + key + '>' + stringify(item) + '</' + key + '>';
       }
