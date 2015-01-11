@@ -4,7 +4,7 @@ var libxmljs = require('libxmljs');
 exports.stringify = stringify;
 exports.parse = parse;
 
-function parseAttributes(element) {
+function parseAttributes (element) {
   var obj = {};
   element.attrs().forEach(function (attr) {
     obj[attr.name()] = attr.value();
@@ -12,7 +12,7 @@ function parseAttributes(element) {
   return obj;
 }
 
-function stringifyAttributes(obj) {
+function stringifyAttributes (obj) {
   var attributes = [];
   for (var key in obj) {
     attributes.push('' + key + '=\"' + obj[key] + '\"');
@@ -20,14 +20,14 @@ function stringifyAttributes(obj) {
   return attributes.join(' ');
 }
 
-function hasTextNode(child) {
+function hasTextNode (child) {
   return child.childNodes().length > 0 && child.childNodes()[0].name() === 'text';
 }
 
-function stringify(obj) {
+function stringify (obj) {
   var xml = '';
 
-  function convert(item) {
+  function convert (item) {
     if (typeof item === 'object') {
       if (item["_attributes"]) {
         xml += '<' + key + ' ' + stringifyAttributes(item["_attributes"]) + '>' + (typeof item["_value"] === 'object' ? stringify(item["_value"]) : item["_value"]) + '</' + key + '>';
@@ -52,7 +52,7 @@ function stringify(obj) {
   return xml;
 }
 
-function parse(data) {
+function parse (data) {
   var element = data instanceof libxmljs.Document || data instanceof libxmljs.Element ? data : libxmljs.parseXml(data);
   var obj = {};
   if (element instanceof libxmljs.Document) {
