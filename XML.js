@@ -76,11 +76,11 @@ function parse (data) {
         }
       });
     } else {
-      if (hasTextNode(element)) {
+      if (hasTextNode(element)) 
         obj[element.name()] = element.text();
-      } else {
+      else 
         obj = parseAttributes(element);
-      }
+      
     }
   }
 
