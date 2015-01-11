@@ -1,6 +1,9 @@
 'use strict';
 var libxmljs = require('libxmljs');
 
+exports.stringify = stringify;
+exports.parse = parse;
+
 function parseAttributes(element) {
   var obj = {};
   element.attrs().forEach(function (attr) {
@@ -83,7 +86,3 @@ function parse(data) {
 
   return obj;
 }
-
-exports.stringify = stringify;
-
-exports.parse = parse;
